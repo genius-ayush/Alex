@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import Button from "./Button";
 // import ShimmerButton from "@/components/ui/ShimmerButton";
 
 function Hero() {
@@ -21,19 +22,21 @@ function Hero() {
 
               </div>
 
-              <button className="inline-flex h-12 animate-shimmer items-center justify-center rounded-xl border border-[#7270FF] bg-[linear-gradient(110deg,#7270FF,45%,#5b58e6,55%,#7270FF)] bg-[length:200%_100%] px-6 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#7270FF] focus:ring-offset-2 focus:ring-offset-slate-50 mt-10">
-                Download
-              </button>
+              <Button />
 
+              
             </div>
 
           </>
         }
       >
-        <video controls>don't you know
-          <source src="/hero.mp4" type="video/mp4" height={720}
-            width={1400} className="mx-auto rounded-2xl object-cover h-full object-left-top" />
-          Your browser does not support the video tag.
+        <video
+          controls
+          className="mx-auto rounded-xl object-cover h-full object-left-top border-4 border-[#403F92]"
+          height={720}
+          width={1400}
+        >
+          <source src="/hero.mp4" type="video/mp4" />
         </video>
       </ContainerScroll>
     </div>

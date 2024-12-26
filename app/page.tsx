@@ -11,6 +11,7 @@ export default function Home() {
     <div className="w-full h-screen ">
       <Navbar/>
       <Hero/>
+      {/* <HeroExp/> */}
       <Strip/>
       <Features/>
       <Pricing/>
