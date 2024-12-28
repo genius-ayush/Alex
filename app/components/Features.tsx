@@ -56,85 +56,83 @@ const features = [
 ]
 
 export default function FeatureShowcase() {
-  const [activeFeature, setActiveFeature] = useState(0)
-  const [progressValues, setProgressValues] = useState<number[]>(features.map(() => 0))
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [progressValues, setProgressValues] = useState<number[]>(features.map(() => 0));
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Handle video progress
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
+    const video = videoRef.current;
+    if (!video) return;
 
     const handleTimeUpdate = () => {
-      const progress = (video.currentTime / video.duration) * 100
-      setProgressValues(prev => {
-        const newValues = [...prev]
-        newValues[activeFeature] = progress
-        return newValues
-      })
-    }
+      const progress = (video.currentTime / video.duration) * 100;
+      setProgressValues((prev) => {
+        const newValues = [...prev];
+        newValues[activeFeature] = progress;
+        return newValues;
+      });
+    };
 
     const handleEnded = () => {
-      setActiveFeature(prev => (prev + 1) % features.length)
-    }
+      setActiveFeature((prev) => (prev + 1) % features.length);
+    };
 
     const handleLoadStart = () => {
-      setIsLoading(true)
-      setError(null)
-    }
+      setIsLoading(true);
+      setError(null);
+    };
 
     const handleCanPlay = () => {
-      setIsLoading(false)
-      video.play().catch(error => {
-        setError('Failed to play video. Please try again.')
-        console.error('Video playback error:', error)
-      })
-    }
+      setIsLoading(false);
+      video.play().catch((error) => {
+        setError('Failed to play video. Please try again.');
+        console.error('Video playback error:', error);
+      });
+    };
 
     const handleError = () => {
-      setIsLoading(false)
-      setError('Failed to load video. Please try again.')
-    }
+      setIsLoading(false);
+      setError('Failed to load video. Please try again.');
+    };
 
-    video.addEventListener('timeupdate', handleTimeUpdate)
-    video.addEventListener('ended', handleEnded)
-    video.addEventListener('loadstart', handleLoadStart)
-    video.addEventListener('canplay', handleCanPlay)
-    video.addEventListener('error', handleError)
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    video.addEventListener('ended', handleEnded);
+    video.addEventListener('loadstart', handleLoadStart);
+    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('error', handleError);
 
     return () => {
-      video.removeEventListener('timeupdate', handleTimeUpdate)
-      video.removeEventListener('ended', handleEnded)
-      video.removeEventListener('loadstart', handleLoadStart)
-      video.removeEventListener('canplay', handleCanPlay)
-      video.removeEventListener('error', handleError)
-    }
-  }, [activeFeature])
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+      video.removeEventListener('ended', handleEnded);
+      video.removeEventListener('loadstart', handleLoadStart);
+      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('error', handleError);
+    };
+  }, [activeFeature]);
 
-  // Load and play new video when active feature changes
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
+    const video = videoRef.current;
+    if (!video) return;
 
-    video.src = features[activeFeature].videoUrl
-    video.load()
-  }, [activeFeature])
+    video.src = features[activeFeature].videoUrl;
+    video.load();
+  }, [activeFeature]);
 
   const handleFeatureClick = (index: number) => {
-    if (index === activeFeature) return
-    setActiveFeature(index)
-  }
+    if (index === activeFeature) return;
+    setActiveFeature(index);
+  };
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        <h1 className="text-5xl font-bold mb-16">Build fast. Stay flexible.</h1>
-        
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8 md:py-16">
+        <h1 className="text-3xl md:text-5xl font-bold mb-8 md:mb-16">Build fast. Stay flexible.</h1>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Features List */}
-          <div className="space-y-12 lg:col-span-1">
+          <div className="space-y-8 lg:col-span-1">
             {features.map((feature, index) => (
               <div
                 key={feature.id}
@@ -144,58 +142,36 @@ export default function FeatureShowcase() {
                 )}
                 onClick={() => handleFeatureClick(index)}
               >
-                {/* Individual progress bar for each feature */}
-                <div 
-                  className={cn(
-                    "absolute left-0 top-0 w-1 rounded-lg h-full bg-gray-800 overflow-hidden",
-                    "transition-all duration-500 ease-in-out",
-                    index === activeFeature ? "opacity-100 scale-y-100" : "opacity-0 scale-y-95"
-                  )}
-                >
-                  <div 
-                    className={cn(
-                      "absolute top-0 left-0 w-full bg-blue-500",
-                      "transition-all duration-300 ease-out"
-                    )}
-                    style={{ 
+                <div className="absolute left-0 top-0 w-1 rounded-lg h-full bg-gray-800 overflow-hidden">
+                  <div
+                    className="absolute top-0 left-0 w-full bg-blue-500"
+                    style={{
                       height: `${progressValues[index]}%`,
                       opacity: index === activeFeature ? 1 : 0,
-                      transform: `scaleY(${index === activeFeature ? 1 : 0})`
                     }}
                   />
                 </div>
-                
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <h3 className="text-lg md:text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-sm md:text-base text-gray-400">{feature.description}</p>
               </div>
             ))}
           </div>
 
           {/* Video Player */}
           <div className="lg:col-span-2 flex items-center justify-center">
-            <div className="relative aspect-video bg-gray-900 rounded-lg overflow-hidden w-full max-w-2xl h-1/2">
+            <div className="relative aspect-video bg-gray-900 rounded-lg overflow-hidden w-full">
               <video
                 ref={videoRef}
-                className="w-full h-full object-fill"
+                className="w-full h-full object-cover"
                 muted
                 playsInline
                 crossOrigin="anonymous"
-              >
-                <source 
-                  src={features[activeFeature].videoUrl} 
-                  type="video/webm"
-                />
-                Your browser does not support the video tag.
-              </video>
-
-              {/* Loading State */}
+              />
               {isLoading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-gray-900/50">
                   <Loader2 className="w-8 h-8 animate-spin" />
                 </div>
               )}
-
-              {/* Error State */}
               {error && (
                 <div className="absolute inset-0 flex items-center justify-center bg-gray-900/50">
                   <p className="text-red-400">{error}</p>
@@ -206,6 +182,5 @@ export default function FeatureShowcase() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

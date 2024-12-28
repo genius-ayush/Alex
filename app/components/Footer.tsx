@@ -1,3 +1,5 @@
+
+"use client";
 import { NotebookText  } from "lucide-react";
 import React from "react";
 
@@ -6,7 +8,7 @@ import React from "react";
 const Footer: React.FC = () => {
   return (
     <footer className=" text-white py-10 border-gray-700 border-t-[0.1px] left-0 w-full bg-black">
-      <div className="container mx-auto flex flex-wrap justify-between items-start px-4 w-2/3 ">
+      <div className="container mx-auto flex flex-wrap justify-between items-start px-4 lg:w-2/3 ">
         {/* Brand Section */}
 
         <div className="mb-6 md:mb-0">
