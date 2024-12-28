@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
-import Image from "next/image";
-import { Button } from "@/components/ui/moving-border";
 
 
 export default function Pricing() {
@@ -20,7 +18,7 @@ export default function Pricing() {
         <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-10">
         <span className="font-bold">Free</span> while in beta.
         </p>
-        <button className="rounded-full pl-4 pr-4 py-3 text-white flex  mx-auto items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
+        <button className="rounded-full pl-6 pr-6 py-5 text-white flex  mx-auto items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
           <span>Download Now </span>
           
         </button>
