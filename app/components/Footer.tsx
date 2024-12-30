@@ -1,7 +1,7 @@
 
 "use client";
 import React from "react";
-
+import Image from 'next/image'
 
 
 const Footer: React.FC = () => {
@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         <div className="mb-6 md:mb-0">
 
         <div className="flex items-center font-semibold gap-2">
-            <img src="icon.png" alt="Logo" className="w-9 h-9" />
+            <Image src="icon.png" alt="Logo" className="w-9 h-9" />
             <span className="leading-10 text-xl">Alex</span>
           </div>
           

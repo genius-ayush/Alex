@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from 'next/image'
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,7 @@ function Navbar() {
         <div className="flex justify-between items-center h-[72px] w-full lg:w-3/4 mx-auto px-6 lg:px-20 shadow-sm">
           {/* Logo Section */}
           <div className="flex items-center font-semibold gap-2">
-            <img src="icon.png" alt="Logo" className="w-9 h-9" />
+            <Image src="icon.png" alt="Logo" className="w-9 h-9" />
             <span className="leading-10 text-xl">Alex</span>
           </div>
 

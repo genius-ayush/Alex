@@ -3,6 +3,7 @@ import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Button from "./Button";
 import { BackgroundGradient } from "@/components/ui/hero-gradient";
+import Image from 'next/image'
 // import ShimmerButton from "@/components/ui/ShimmerButton";
 // import Video from 'next-video';
 
@@ -28,7 +29,7 @@ function Hero() {
 
               <div className="">
               
-              <div className="mt-10 font-semibold">Backed by <span className=""><img src="yc.svg" className="mx-auto mt-1"/> </span></div> 
+              <div className="mt-10 font-semibold">Backed by <span className=""><Image src="yc.svg" alt="Video" className="mx-auto mt-1"/> </span></div> 
 
               </div>
 
