@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         <div className="mb-6 md:mb-0">
 
         <div className="flex items-center font-semibold gap-2">
-            <Image src="icon.png" alt="Logo" className="w-9 h-9" />
+            <Image src="/icon.png" alt="Logo" className="w-9 h-9" width={9} height={9}/>
             <span className="leading-10 text-xl">Alex</span>
           </div>
           

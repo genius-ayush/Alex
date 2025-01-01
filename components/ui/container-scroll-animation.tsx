@@ -54,6 +54,7 @@ export const ContainerScroll = ({
   );
 };
 
+
 export const Header = ({ translate, titleComponent }: any) => {
   return (
     <motion.div

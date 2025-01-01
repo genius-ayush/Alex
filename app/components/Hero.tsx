@@ -29,7 +29,7 @@ function Hero() {
 
               <div className="">
               
-              <div className="mt-10 font-semibold">Backed by <span className=""><Image src="yc.svg" alt="Video" className="mx-auto mt-1"/> </span></div> 
+              <div className="mt-10 font-semibold">Backed by <span className=""><Image src="/yc.svg" alt="Video" className="mx-auto mt-1" width={100} height={100}/> </span></div> 
 
               </div>
 
