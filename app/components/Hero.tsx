@@ -5,7 +5,7 @@ import Button from "./Button";
 import { BackgroundGradient } from "@/components/ui/hero-gradient";
 import Image from 'next/image'
 // import ShimmerButton from "@/components/ui/ShimmerButton";
-// import Video from 'next-video';
+import Video from 'next-video';
 
 function Hero() {
   return (
@@ -48,11 +48,12 @@ function Hero() {
           height={720}
           width={1400}
           poster="image.png"
+          src="/hero.mp4"
         >
-          <source src="hero.mp4" type="video.mp4" />
+          {/* <source src="/hero.mp4" type="video.mp4" /> */}
         </video>
-        {/* <Video src={"/hero.mp4"} className="mx-auto rounded-[22px] object-cover h-full object-left-top border-0 border-[#403F92]" poster="image.png"/> */}
-        </BackgroundGradient>
+        {/* { <Video src={"/hero.mp4"} className="mx-auto rounded-3xl object-cover h-full object-left-top border-0 border-[#403F92]" poster="image.png"/>  */}
+        </BackgroundGradient> 
        
       </ContainerScroll>
     </div>
